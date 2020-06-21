@@ -1,0 +1,8 @@
+1) найти шаблон html bootstrap4
+главная страница
+login.html
+register.html
+
+2) создать app для products
+
+http://127.0.0.1:8000/products/all/

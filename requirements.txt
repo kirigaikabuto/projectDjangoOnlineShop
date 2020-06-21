@@ -1,0 +1,116 @@
+1.Create Django Project только когда создает новый проект
+
+1)Установка библиотек
+python -m venv venv
+venv\scripts\activate
+pip install django
+2)создаем проект
+django-admin startproject mysite .
+3) mysite -> files
+settings.py - там хранятся настройки по подключение к базе данных и подключение внешних приложений
+urls.py - там хранятся маршруты который возможны по веб приложению
+4) запуск проекта
+python manage.py migrate
+python manage.py runserver
+http://127.0.0.1:8000/ - это основная ссылка на проект
+http://127.0.0.1:8000/admin - эта ссылка на админ панель
+5)создание админа для нашей системы (superuser)
+python manage.py createsuperuser
+Найстройки
+Username (leave blank to use 'lolus'): admin
+Email address: admin@gmail.com
+Password:admin
+Password (again):admin
+The password is too similar to the username.
+This password is too short. It must contain at least 8 characters.
+This password is too common.
+Bypass password validation and create user anyway? [y/N]: y
+Superuser created successfully.
+
+2. Создание приложений
+1) создать приложение
+python manage.py startapp main
+2) добавить или зарегистрировать приложение в файлах найтройки(setting.py) INSTALLED_APPS
+main - главная страница веб сайта
+3) создать файла urls.py в вашем приложение
+4) необходимо прописать путь к main->urls.py из mysite->urls.py
+ path('', include("main.urls")),
+
+5) необходимо создать функции main_func в views.py
+from django.shortcuts import render,HttpResponse
+def main_func(request):
+    reutnr HttpResponse("helllo")
+
+6) подключение функции из views.py в  urls.py
+from .views import main_func
+urlpatterns = [
+    path("", main_func),
+]
+
+@app.route("/")
+def main_func():
+    return "sdsdsds"
+
+7)создать приложение users
+python manage.py startapp users
+7.1 добавить его в setting.py
+7.2 создать urls.py
+7.3 подключить в mysite->ulrs.py  users->urls.py
+
+
+
+
+Интернет магазин
+main- главная страница
+пользователи - регистрации,авторизации,
+товары - создать товар, обновить информацию, удалить товар , вывовдить список товаров
+заказы
+
+
+
+flask
+@app.route("/") ->  urls.py
+
+views.py
+def main_func():
+    return "sdsdsds"
+
+
+
+
+
+
+
+
+Prime source kz
+1) Online shop
+  back-end develop
+  front-develop
+  designer
+  data engeener
+
+продумать систему
+построить базу данных
+узнать все что должна делать система и что она не должна
+придумать дизайн
+получитьб хостинг и настроить
+облачные храналища (cloud maining)
+
+2) Prime source usa
+  back-end develop
+  front-develop
+  designer
+  data engeener
+  dev-ops
+  product-owner
+  manager
+  тестировщики
+
+
+
+  products/
+  это страница продуктов
+
+
+
+  users->templates->users -> (login.html,register.html)
